@@ -17,6 +17,13 @@ public class Image {
 		driver.get("http://leafground.com/pages/Image.html");
 		driver.findElement(By.xpath("//img[@src='../images/home.png']")).click();
 		driver.navigate().back();
+		
+		WebElement img = driver.findElement(By.xpath("//img[@src='../images/abcd.jpg']"));
+		if (img.getAttribute("naturalHeight").equals("0")) {
+			System.out.println("The image is broken");
+			
+		}
+		
 		driver.findElement(By.xpath("//img[@src='../images/keyboard.png']")).click();
 
 	}
