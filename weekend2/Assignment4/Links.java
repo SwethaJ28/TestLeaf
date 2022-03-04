@@ -23,7 +23,18 @@ public class Links {
 		driver.findElement(By.xpath("(//h5[@class='wp-categories-title'])[3]")).click();
 		String attribute = driver.findElement(By.xpath("//a[text() = 'Find where am supposed to go without clicking me?']")).getAttribute("href");
 		System.out.println(attribute);
-		//WebElement findElement = driver.findElement(By.xpath("//a[text() = 'Verify am I broken?']"));
+		
+		WebElement findElement = driver.findElement(By.xpath("//a[text() = 'Verify am I broken?']"));
+		findElement.click();
+		if (driver.getTitle().contains("HTTP Status 404 – Not Found")) {
+			System.out.println("Link is Broken");
+		}
+		else {
+			System.out.println("Link is not Broken");
+		}
+		driver.navigate().back();
+		
+		
 		List<WebElement> allLinks = driver.findElements(By.tagName("a"));
 		System.out.println(allLinks.size());
 		
